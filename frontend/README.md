@@ -1,10 +1,12 @@
 # Retention Arcade (frontend)
 
-Lightweight Vite + React UI for the Customer Retention Platform.
+UI + score API run together via Vite.
 
 ```bash
 npm install
 npm run dev
 ```
 
-See the [root README](../README.md) for backend setup and API details.
+Open http://localhost:5173 — scoring uses the built-in API routes (`/predict`, `/models`, `/insights`).
+
+See the [root README](../README.md) for the optional full Python ML backend.

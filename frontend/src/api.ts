@@ -1,4 +1,5 @@
-const API_BASE = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
+// Same origin as the UI in dev (Vite mounts the score API). Override with VITE_API_URL if needed.
+const API_BASE = import.meta.env.VITE_API_URL ?? ''
 
 export type CustomerInput = {
   customerID?: string

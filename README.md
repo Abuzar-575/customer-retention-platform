@@ -30,46 +30,30 @@ customer-retention-platform/
 - Node.js 18+
 - A [Groq](https://console.groq.com/) API key (for retention strategies / business playbook)
 
-## Backend setup
+## Quick start (frontend + score API together)
+
+One command starts the UI **and** the score API on the same server (no separate backend process):
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173). Pull Score / Batch / Model Lab call `/predict` and `/models` on that same origin.
+
+Optional standalone API only: `node simple-api/server.mjs` (port 8000).
+
+## Full ML backend (optional)
+
+Needs Python deps, trained pickles, and `backend/.env` with `GROQ_API_KEY`.
 
 ```bash
 cd backend
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# macOS / Linux
-source venv/bin/activate
-
 pip install -r requirements.txt
-```
-
-Create `backend/.env`:
-
-```env
-GROQ_API_KEY=your_key_here
-```
-
-### Train models (required once)
-
-Pickle artifacts are gitignored. Train before first API run:
-
-```bash
-cd backend
 python models/train.py
-```
-
-This writes `best_model.pkl`, `preprocessor.pkl`, `feature_names.pkl`, `background_sample.pkl`, and updates `models/saved/metrics.json`.
-
-### Run the API
-
-```bash
-cd backend
 uvicorn main:app --reload --port 8000
 ```
-
-Health check: [http://localhost:8000](http://localhost:8000)
 
 ## Frontend setup
 
